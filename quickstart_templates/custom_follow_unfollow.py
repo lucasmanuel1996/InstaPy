@@ -33,13 +33,12 @@ with smart_run(session):
                            dont_skip_business_categories=['Photographer'])
 
     session.set_quota_supervisor(enabled=True,
-                                 sleep_after=["likes", "comments_d", "follows", "unfollows", "server_calls_h"],
+                                 sleep_after=["likes", "comments_d", "follows", "unfollows", "server_calls_d"],
                                  sleepyhead=True, stochastic_flow=True, notify_me=True,
                                  peak_likes=(57, 585),
                                  peak_comments=(21, 182),
                                  peak_follows=(48, None),
-                                 peak_unfollows=(35, 402),
-                                 peak_server_calls=(190, 4700))
+                                 peak_unfollows=(35, 402))
 
     session.set_do_like(enabled=True, percentage=100)
     session.set_do_comment(enabled=True, percentage=50)
@@ -75,6 +74,6 @@ with smart_run(session):
 
     # unfollow activity
     session.set_dont_unfollow_active_users(enabled=True, posts=5)
-    session.unfollow_users(amount=30, InstapyFollowed=(True, "nonfollowers"), style="FIFO", unfollow_after=90 * 60 * 60,
+    session.unfollow_users(amount=300, InstapyFollowed=(False, "nonfollowers"), style="FIFO", unfollow_after=1,
                            sleep_delay=600)
 
