@@ -21,22 +21,7 @@ with smart_run(session):
     i = 0
 
     while (i < val):
-        # general settings
-        session.set_relationship_bounds(enabled=True,
-                                        potency_ratio=0.6,
-                                        delimit_by_numbers=True,
-                                        max_followers=6000,
-                                        max_following=3000,
-                                        min_followers=100,
-                                        min_following=100)
-
-        session.set_user_interact(
-            amount=2, randomize=False, percentage=80, media='Photo')
-
-        session.set_skip_users(skip_private=False,
-                               skip_no_profile_pic=True,
-                               skip_business=True,
-                               dont_skip_business_categories=['Photographer'])
+        # general setting
 
         session.set_quota_supervisor(enabled=True,
                                      sleep_after=[
@@ -45,8 +30,8 @@ with smart_run(session):
                                      peak_likes=(57, 585),
                                      peak_comments=(21, 182),
                                      peak_follows=(160, None),
-                                     peak_unfollows=(100, None),
-                                     peak_server_calls=(300, None))
+                                     peak_unfollows=(300, None),
+                                     peak_server_calls=(500, None))
 
         # Makes timeouts seems more human
         randomSleepDelay = random.randrange(140, 330)
